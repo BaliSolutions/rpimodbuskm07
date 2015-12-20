@@ -3,7 +3,7 @@ import minimalmodbus
 import time
 
 instrument = minimalmodbus.Instrument('/dev/ttyAMA0', 1, mode='rtu') # port name, slave address (in decimal)
-instrument.serial.baudrate=4800
+instrument.serial.baudrate=19200
 
 #instrument.debug=True
 v1=0.0
