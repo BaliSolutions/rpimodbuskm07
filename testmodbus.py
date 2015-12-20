@@ -8,11 +8,13 @@ instrument.serial.baudrate=9600
 #instrument.debug=True
 v1=0.0
 pf1=0.0
+
 while True:
 	try:
 		v1 = instrument.read_long(257,4,False)
 		time.sleep(1)
 		pf1 = instrument.read_register(0,0,4,True)
+		time.sleep(1)
 	except IOError:
 		print("Failed to read from instrument")
 	except ValueError:
