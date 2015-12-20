@@ -12,9 +12,9 @@ pf1=0.0
 while True:
 	try:
 		v1 = (instrument.read_long(257,4,False))/10.0
-		time.sleep(1)
+		time.sleep(0.5)
 		pf1 = (instrument.read_register(0,0,4,True))/1000.0
-		time.sleep(1)
+		time.sleep(0.5)
 	except IOError:
 		print("Failed to read from instrument")
 	except ValueError:
