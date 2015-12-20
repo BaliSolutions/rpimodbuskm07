@@ -12,6 +12,8 @@ while True:
 		v1 = instrument.read_long(257,4,False)
 	except IOError:
 		print("Failed to read from instrument")
+	except ValueError:
+		print("Checksum error")
 	v1=v1/10.0
 	print  v1
 	time.sleep(1)
