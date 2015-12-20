@@ -6,7 +6,8 @@ instrument = minimalmodbus.Instrument('/dev/ttyAMA0', 1, mode='rtu') # port name
 instrument.serial.baudrate=9600
 
 #instrument.debug=True
-
+v1=0.0
+pf1=0.0
 while True:
 	try:
 		v1 = instrument.read_long(257,4,False)
