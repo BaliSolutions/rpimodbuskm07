@@ -34,10 +34,10 @@ def readpf():
 	return pf1
 
 while True:
-	print datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S') #timestamp starttime
+	print datetime.now() #timestamp start
 	volt=readvoltage()
 	pf=readpf()
 	print volt
 	print pf
-	print datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S') #timestamp finishtime
+	print datetime.now() #timestamp stop
 	time.sleep(10)
