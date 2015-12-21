@@ -52,7 +52,6 @@ def readkW():
 			time.sleep(0.004)
 			if (instrument.read_register(275,0,4,False))>=3:
 				div=1000.0
-				print (instrument.read_register(275,0,4,False))
 			else:
 				div=10000.0
 			time.sleep(0.004)
@@ -110,5 +109,6 @@ while True:
 	print "%s Voltage %s Amp PF=%s" %(volt,amp,pf)
 	print "%s Kw %s KVar %s KVA" %(kw,kvar,kva)
 	print "======================================="
+	print (instrument.read_register(275,0,4,False))
 	#print datetime.now() #timestamp stop
 	time.sleep(10)
