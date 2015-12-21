@@ -24,7 +24,7 @@ def readvoltage():
 
 
 while True:
-	volt=readvoltage
+	volt=readvoltage()
 	try:
 		#v1 = (instrument.read_long(257,4,False))/10.0
 		#time.sleep(0.5)
