@@ -52,6 +52,7 @@ def readkW():
 			time.sleep(0.004)
 			if (instrument.read_register(275,0,4,False))>=3:
 				div=1000.0
+				print (instrument.read_register(275,0,4,False))
 			else:
 				div=10000.0
 			time.sleep(0.004)
