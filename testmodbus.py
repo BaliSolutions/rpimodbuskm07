@@ -34,12 +34,24 @@ def readpf():
 			print ("Received Power Factor Data")
 			break
 	return pf1
+def readamp():
+	while True:
+		try:
+			time.sleep(0.004)
+			amp1 = (instrument.read_long(268,4,False))/10.0
+		except:
+			print ("Got some Power Factor read error")
+			continue
+		else:
+			print ("Received Power Factor Data")
+			break
+	return amp1
 
 while True:
 	print datetime.now() #timestamp start
 	volt=readvoltage()
+	amp=readamp()
 	pf=readpf()
-	print volt
-	print pf
+	print "%s Voltage %s Amp PF=%s" %(volt,amp,pf)
 	print datetime.now() #timestamp stop
 	time.sleep(10)
