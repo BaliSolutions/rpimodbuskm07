@@ -48,3 +48,4 @@ while True:
 		print("Checksum error")"""
 	print volt
 	print pf
+	time.sleep(10)
