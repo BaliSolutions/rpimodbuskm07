@@ -32,7 +32,7 @@ def readpf():
 		else:
 			print ("Received Power Factor Data")
 			break
-	return v1	
+	return pf1
 
 while True:
 	volt=readvoltage()
