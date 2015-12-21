@@ -50,7 +50,7 @@ def readkW():
 	while True:
 		try:
 			time.sleep(0.004)
-			if (instrument.read_register(0,0,4,False))>=3:
+			if (instrument.read_register(275,0,4,False))>=3:
 				div=1000.0
 			else:
 				div=10000.0
@@ -67,7 +67,7 @@ def readkVar():
 	while True:
 		try:
 			time.sleep(0.004)
-			if (instrument.read_register(0,0,4,False))>=3:
+			if (instrument.read_register(275,0,4,False))>=3:
 				div=1000.0
 			else:
 				div=10000.0
@@ -84,7 +84,7 @@ def readkVA():
 	while True:
 		try:
 			time.sleep(0.004)
-			if (instrument.read_register(0,0,4,False))>=3:
+			if (instrument.read_register(275,0,4,False))>=3:
 				div=1000.0
 			else:
 				div=10000.0
