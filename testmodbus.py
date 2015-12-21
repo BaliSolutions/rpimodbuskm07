@@ -6,18 +6,33 @@ instrument = minimalmodbus.Instrument('/dev/ttyAMA0', 1, mode='rtu') # port name
 instrument.serial.baudrate=9600
 
 #instrument.debug=True
-v1=0.0
+#v1=0.0
 pf1=0.0
 
+def readvoltage:
+	while True:
+		try:
+			v1 = (instrument.read_long(257,4,False))/10.0
+			time.sleep(0.5)
+		except:
+			print ("Got some error")
+			continue
+		else:
+			print ("Received Voltage")
+			break
+	return v1
+
+
 while True:
+	volt=readvoltage
 	try:
-		v1 = (instrument.read_long(257,4,False))/10.0
-		time.sleep(0.5)
+		#v1 = (instrument.read_long(257,4,False))/10.0
+		#time.sleep(0.5)
 		pf1 = (instrument.read_register(0,0,4,True))/1000.0
 		time.sleep(0.5)
 	except IOError:
 		print("Failed to read from instrument")
 	except ValueError:
 		print("Checksum error")
-	print v1
+	print volt
 	print pf1
