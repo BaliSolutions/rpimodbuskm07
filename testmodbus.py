@@ -46,12 +46,53 @@ def readamp():
 			#print ("Received Amps Data")
 			break
 	return amp1
+def readkW():
+	while True:
+		try:
+			time.sleep(0.004)
+			kw1 = (instrument.read_long(277,4,True))/1000.0
+		except:
+			#print ("Got some Amps read error")
+			continue
+		else:
+			#print ("Received Amps Data")
+			break
+	return kw1
+def readkVar():
+	while True:
+		try:
+			time.sleep(0.004)
+			kvar1 = (instrument.read_long(283,4,True))/1000.0
+		except:
+			#print ("Got some Amps read error")
+			continue
+		else:
+			#print ("Received Amps Data")
+			break
+	return kvar1
+def readkVA():
+	while True:
+		try:
+			time.sleep(0.004)
+			kva1 = (instrument.read_long(289,4,True))/1000.0
+		except:
+			#print ("Got some Amps read error")
+			continue
+		else:
+			#print ("Received Amps Data")
+			break
+	return kva1
 
 while True:
 	print datetime.now() #timestamp start
 	volt=readvoltage()
 	amp=readamp()
 	pf=readpf()
+	kw=readkW()
+	kvar=readkVar()
+	kva=readkVA()
 	print "%s Voltage %s Amp PF=%s" %(volt,amp,pf)
+	print "%s Kw %s KVar %s KVA" %(kw,kvar,kva)
+	print "======================================="
 	#print datetime.now() #timestamp stop
 	time.sleep(10)
