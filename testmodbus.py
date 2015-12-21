@@ -72,7 +72,7 @@ def readkVar():
 			else:
 				div=10000.0
 			time.sleep(0.004)
-			kvar1 = (instrument.read_long(283,4,True))/1000.0
+			kvar1 = (instrument.read_long(283,4,True))/div
 		except:
 			#print ("Got some Amps read error")
 			continue
@@ -89,7 +89,7 @@ def readkVA():
 			else:
 				div=10000.0
 			time.sleep(0.004)
-			kva1 = (instrument.read_long(289,4,True))/1000.0
+			kva1 = (instrument.read_long(289,4,True))/div
 		except:
 			#print ("Got some Amps read error")
 			continue
