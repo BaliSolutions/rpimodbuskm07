@@ -38,7 +38,7 @@ def readamp():
 	while True:
 		try:
 			time.sleep(0.004)
-			amp1 = (instrument.read_long(268,4,False))/10.0
+			amp1 = (instrument.read_long(269,4,False))/10.0
 		except:
 			print ("Got some Power Factor read error")
 			continue
