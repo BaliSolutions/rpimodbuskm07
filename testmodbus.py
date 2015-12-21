@@ -9,7 +9,7 @@ instrument.serial.baudrate=9600
 #v1=0.0
 pf1=0.0
 
-def readvoltage:
+def readvoltage():
 	while True:
 		try:
 			v1 = (instrument.read_long(257,4,False))/10.0
