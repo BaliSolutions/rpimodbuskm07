@@ -50,7 +50,12 @@ def readkW():
 	while True:
 		try:
 			time.sleep(0.004)
-			kw1 = (instrument.read_long(277,4,True))/1000.0
+			if (instrument.read_register(0,0,4,False))>=3:
+				div=1000.0
+			else:
+				div=10000.0
+			time.sleep(0.004)
+			kw1 = (instrument.read_long(277,4,True))/div
 		except:
 			#print ("Got some Amps read error")
 			continue
@@ -61,6 +66,11 @@ def readkW():
 def readkVar():
 	while True:
 		try:
+			time.sleep(0.004)
+			if (instrument.read_register(0,0,4,False))>=3:
+				div=1000.0
+			else:
+				div=10000.0
 			time.sleep(0.004)
 			kvar1 = (instrument.read_long(283,4,True))/1000.0
 		except:
@@ -73,6 +83,11 @@ def readkVar():
 def readkVA():
 	while True:
 		try:
+			time.sleep(0.004)
+			if (instrument.read_register(0,0,4,False))>=3:
+				div=1000.0
+			else:
+				div=10000.0
 			time.sleep(0.004)
 			kva1 = (instrument.read_long(289,4,True))/1000.0
 		except:
