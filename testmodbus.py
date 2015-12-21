@@ -13,7 +13,7 @@ pf1=0.0
 def readvoltage():
 	while True:
 		try:
-			time.sleep(0.003)
+			time.sleep(0.004)
 			v1 = (instrument.read_long(257,4,False))/10.0
 		except:
 			print ("Got some readvoltage read error")
@@ -25,7 +25,7 @@ def readvoltage():
 def readpf():
 	while True:
 		try:
-			time.sleep(0.003)
+			time.sleep(0.004)
 			pf1 = (instrument.read_register(0,0,4,True))/1000.0
 		except:
 			print ("Got some Power Factor read error")
