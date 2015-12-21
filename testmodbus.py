@@ -15,24 +15,36 @@ def readvoltage():
 			v1 = (instrument.read_long(257,4,False))/10.0
 			#time.sleep(0.5)
 		except:
-			print ("Got some readvoltage error")
+			print ("Got some readvoltage read error")
 			continue
 		else:
-			print ("Received Voltage")
+			print ("Received Voltage Data")
 			break
 	return v1
-
+def readpf():
+	while True:
+		try:
+			pf1 = (instrument.read_register(0,0,4,True))/1000.0
+			#time.sleep(0.5)
+		except:
+			print ("Got some Power Factor read error")
+			continue
+		else:
+			print ("Received Power Factor Data")
+			break
+	return v1	
 
 while True:
 	volt=readvoltage()
-	try:
+	pf=readpf()
+	"""try:
 		#v1 = (instrument.read_long(257,4,False))/10.0
 		#time.sleep(0.5)
-		pf1 = (instrument.read_register(0,0,4,True))/1000.0
-		time.sleep(0.5)
+		#pf1 = (instrument.read_register(0,0,4,True))/1000.0
+		#time.sleep(0.5)
 	except IOError:
 		print("Failed to read from instrument")
 	except ValueError:
-		print("Checksum error")
+		print("Checksum error")"""
 	print volt
-	print pf1
+	print pf
