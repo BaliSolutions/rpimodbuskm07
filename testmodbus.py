@@ -16,10 +16,10 @@ def readvoltage():
 			time.sleep(0.004)
 			v1 = (instrument.read_long(257,4,False))/10.0
 		except:
-			print ("Got some readvoltage read error")
+			#print ("Got some readvoltage read error")
 			continue
 		else:
-			print ("Received Voltage Data")
+			#print ("Received Voltage Data")
 			break
 	return v1
 def readpf():
@@ -28,10 +28,10 @@ def readpf():
 			time.sleep(0.004)
 			pf1 = (instrument.read_register(0,0,4,True))/1000.0
 		except:
-			print ("Got some Power Factor read error")
+			#print ("Got some Power Factor read error")
 			continue
 		else:
-			print ("Received Power Factor Data")
+			#print ("Received Power Factor Data")
 			break
 	return pf1
 def readamp():
@@ -40,10 +40,10 @@ def readamp():
 			time.sleep(0.004)
 			amp1 = (instrument.read_long(269,4,False))/1000.0
 		except:
-			print ("Got some Power Factor read error")
+			print ("Got some Amps read error")
 			continue
 		else:
-			print ("Received Power Factor Data")
+			print ("Received Amps Data")
 			break
 	return amp1
 
