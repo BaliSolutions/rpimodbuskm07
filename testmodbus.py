@@ -40,10 +40,10 @@ def readamp():
 			time.sleep(0.004)
 			amp1 = (instrument.read_long(269,4,False))/1000.0
 		except:
-			print ("Got some Amps read error")
+			#print ("Got some Amps read error")
 			continue
 		else:
-			print ("Received Amps Data")
+			#print ("Received Amps Data")
 			break
 	return amp1
 
@@ -53,5 +53,5 @@ while True:
 	amp=readamp()
 	pf=readpf()
 	print "%s Voltage %s Amp PF=%s" %(volt,amp,pf)
-	print datetime.now() #timestamp stop
+	#print datetime.now() #timestamp stop
 	time.sleep(10)
