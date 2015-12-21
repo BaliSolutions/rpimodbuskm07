@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import minimalmodbus
 import time
-import datetime
+from datetime import datetime
 
 instrument = minimalmodbus.Instrument('/dev/ttyAMA0', 1, mode='rtu') # port name, slave address (in decimal)
 instrument.serial.baudrate=9600
