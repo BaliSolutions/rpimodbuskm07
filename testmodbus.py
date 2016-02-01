@@ -1,14 +1,17 @@
 #!/usr/bin/env python
 import minimalmodbus
 import time
+import MySQLdb
 from datetime import datetime
+
 
 instrument = minimalmodbus.Instrument('/dev/ttyAMA0', 1, mode='rtu') # port name, slave address (in decimal)
 instrument.serial.baudrate=9600
+db = MySQLdb.connect("localhost","root","password","km07")
 
 #instrument.debug=True
 #v1=0.0
-pf1=0.0
+#pf1=0.0
 
 def readvoltage():
 	while True:
