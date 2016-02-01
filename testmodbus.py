@@ -4,14 +4,11 @@ import time
 import MySQLdb
 from datetime import datetime
 
-
 instrument = minimalmodbus.Instrument('/dev/ttyAMA0', 1, mode='rtu') # port name, slave address (in decimal)
 instrument.serial.baudrate=9600
-db = MySQLdb.connect("localhost","root","password","km07")
 
-#instrument.debug=True
-#v1=0.0
-#pf1=0.0
+db = MySQLdb.connect("localhost","root","password","km07") #Let's python handle MySQLdb
+curs=db.cursor() #Cursor to execute MySQL Command
 
 def readvoltage():
 	while True:
@@ -112,5 +109,15 @@ while True:
 	print "%s Voltage %s Amp PF=%s" %(volt,amp,pf)
 	print "%s Kw %s KVar %s KVA" %(kw,kvar,kva)
 	print "======================================="
-	#print datetime.now() #timestamp stop
+try:
+	curs.execute ("""INSERT INTO rawdata values (CURRENT_DATE(),NOW(),%s,%s,%s,%s,%s,%s)""", (volt,amp,pf,kw,kvar,kva))
+
+	db.commit()
+	print "Data committed"
+	
+except:
+	print "Error: the database is being rolled back"
+	db.rollback()
+
+
 	time.sleep(10)
