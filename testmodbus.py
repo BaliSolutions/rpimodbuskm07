@@ -109,15 +109,11 @@ while True:
 	print "%s Voltage %s Amp PF=%s" %(volt,amp,pf)
 	print "%s Kw %s KVar %s KVA" %(kw,kvar,kva)
 	print "======================================="
-try:
-	curs.execute ("""INSERT INTO rawdata values (CURRENT_DATE(),NOW(),%s,%s,%s,%s,%s,%s)""", (volt,amp,pf,kw,kvar,kva))
-
-	db.commit()
-	print "Data committed"
-	
-except:
-	print "Error: the database is being rolled back"
-	db.rollback()
-
-
+	try:
+		curs.execute ("""INSERT INTO rawdata values (CURRENT_DATE(),NOW(),%s,%s,%s,%s,%s,%s)""", (volt,amp,pf,kw,kvar,kva))
+		db.commit()
+		print "Data committed"
+	except:
+		print "Error: the database is being rolled back"
+		db.rollback()
 	time.sleep(10)
