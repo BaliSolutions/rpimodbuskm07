@@ -116,4 +116,4 @@ while True:
 	except:
 		print "Error: the database is being rolled back"
 		db.rollback()
-	time.sleep(60)
+	time.sleep(300)
