@@ -8,7 +8,6 @@
 	$password = "password";
 	$db = "km07";
 	$conn = mysql_connect($host,$user,$password);
-
 	$sql = "SELECT * FROM rawdata";
 
 	mysql_select_db(km07);
