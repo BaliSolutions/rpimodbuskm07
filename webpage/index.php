@@ -8,7 +8,7 @@
 	$password = "password";
 	$db = "km07";
 	$conn = mysql_connect($host,$user,$password);
-	$sql = "SELECT date, time FROM rawdata WHERE date=\'2016-03-17\' AND time BETWEEN \'02:00:00\' and \'03:40:00\'";
+	$sql = "SELECT * FROM rawdata";
 	mysql_select_db(km07);
 	$retval = mysql_query($sql,$conn);
 	while($row = mysql_fetch_array($retval,MYSQL_ASSOC))
