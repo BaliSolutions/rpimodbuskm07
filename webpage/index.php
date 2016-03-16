@@ -14,8 +14,8 @@
 	while($row = mysql_fetch_array($retval,MYSQL_ASSOC))
 	{
 		echo 	"Date : {$row['date']} Time : {$row['time']} <br>".
-				//"{$row['volt']} Volt {$row['amp']} Amp PF={$row['pf']} Readed KVA={$row['kva']} <br>"
-				"------------------------------------------";
+				"{$row['volt']} Volt {$row['amp']} Amp PF={$row['pf']} Readed KVA={$row['kva']} <br>"
+				"------------------------------------------<br>";
 	}
 	mysql_close($conn);
 ?>
