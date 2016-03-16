@@ -4,7 +4,7 @@
 Select Date and Time range to view data
 <form action="result.php" method="post">
 <input type="date" name="date" value="<?php echo $_POST["date"]; ?>">
-From <input type="time" name="start_time"> To <input type="time" name="stop_time"> 
+From <input type="time" name="start_time" value="<?php echo $_POST["start_time"]; ?>"> To <input type="time" name="stop_time" value="<?php echo $_POST["stop_time"]; ?>"> 
  <br><br>
  <input type="submit">
 </form>
