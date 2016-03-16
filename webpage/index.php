@@ -15,8 +15,9 @@
 	{
 		echo 	"REPLIED <br>".
 				"Date : {$row['date']} <br>".
-				"Time : {$row['time']} <br>"
+				"Time : {$row['time']} <br>";
 	}
+	mysql_close($conn);
 ?>
 
 
