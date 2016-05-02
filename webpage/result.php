@@ -54,10 +54,10 @@ var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: <?php json_encode($time); ?>,
+        labels: '<?php json_encode($time); ?>',
         datasets: [{
 			label: '# of Votes',
-            data: <?php json_encode($kwh); ?>
+            data: '<?php json_encode($kwh); ?>'
         }]
     },
     options: {
