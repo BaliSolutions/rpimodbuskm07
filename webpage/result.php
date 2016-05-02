@@ -30,12 +30,12 @@ From <input type="time" name="start_time" value="<?php echo $_POST["start_time"]
 	$sql = "SELECT date,time,volt,amp,pf,kva FROM rawdata WHERE date='$date' AND time BETWEEN '$start_time' and '$stop_time'";
 	mysql_select_db(km07);
 	$retval = mysql_query($sql,$conn);
-	while($row = mysql_fetch_array($retval,MYSQL_ASSOC))
+	/*while($row = mysql_fetch_array($retval,MYSQL_ASSOC))
 	{
 		echo 	"Date : {$row['date']} Time : {$row['time']} <br>".
 				"{$row['volt']} Volt {$row['amp']} Amp PF={$row['pf']} Readed KVA={$row['kva']} <br>".
 				"------------------------------------------<br>";
-	}
+	}*/
 	$time = array();
 	$kwh = array();
 	while($row = mysql_fetch_array($retval,MYSQL_ASSOC))
@@ -43,6 +43,8 @@ From <input type="time" name="start_time" value="<?php echo $_POST["start_time"]
 		$n=0;
 		$time[$n] = $row['time'];
 		$kwh[$n] = $row['kwh'];
+		echo 	"{$row['time']} {$row['kwh']}<br>".
+				"{$time[$n]} {$kwh[$n]}<br>";
 		$n++;
 	}
 	mysql_close($conn);
