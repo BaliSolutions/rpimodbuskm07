@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<script src="Chart.js"></script>
+	<script>
+    	var myChart = new Chart({...})
+	</script>
+</head>>
 <body>
 Select Date and Time range to view data
 <form action="result.php" method="post">
@@ -9,6 +15,8 @@ From <input type="time" name="start_time" value="<?php echo $_POST["start_time"]
  <input type="submit">
 </form>
 <br>
+
+
 
 <?php
 	$host = "localhost";
@@ -31,6 +39,29 @@ From <input type="time" name="start_time" value="<?php echo $_POST["start_time"]
 	mysql_close($conn);
 ?>
 
+<canvas id="myChart" width="150" height="150"></canvas>
+<script>
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3]
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+</script>
 
 </body>
 </html>
