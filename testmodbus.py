@@ -141,4 +141,4 @@ while True:
 		print "Error: the database is being rolled back"
 		db.rollback()
 	lasttotalkwh=totalkwh
-	time.sleep(300)
+	time.sleep(60)
