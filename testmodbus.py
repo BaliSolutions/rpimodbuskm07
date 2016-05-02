@@ -107,13 +107,10 @@ def readTotalkWh():
 				mul=1.0
 			else :
 				mul=1000.0
-			print "Read 537 OK %s" %(mul)
 			time.sleep(0.004)
 			kexp = instrument.read_register(536,0,4,False)
-			print "Read 536 OK %s" %(kexp)
 			time.sleep(0.004)
 			totalkwh = ((instrument.read_long(543,4,True))*mul)/math.pow(10,kexp)
-			print "Read 543 OK %s" %(totalkwh)
 		except:
 			#print ("Got some Amps read error")
 			continue
@@ -122,7 +119,7 @@ def readTotalkWh():
 			break
 	return totalkwh
 
-
+lasttotalkwh=readTotalkWh()
 while True:
 	print datetime.now() #timestamp start
 	volt=readvoltage()
@@ -132,9 +129,10 @@ while True:
 	kvar=readkVar()
 	kva=readkVA()
 	totalkwh=readTotalkWh()
+	kwh=totalkwh-lasttotalkwh
 	print "%s Voltage %s Amp PF=%s" %(volt,amp,pf)
 	print "%s Kw %s KVar %s KVA" %(kw,kvar,kva)
-	print "%s Total kWh" %(totalkwh)
+	print "%s Total kWh" %(kwh)
 	print "======================================="
 	try:
 		curs.execute ("""INSERT INTO rawdata values (CURRENT_DATE(),NOW(),%s,%s,%s,%s,%s,%s)""", (volt,amp,pf,kw,kvar,kva))
@@ -143,4 +141,5 @@ while True:
 	except:
 		print "Error: the database is being rolled back"
 		db.rollback()
+	lasttotalkwh=totalkwh
 	time.sleep(300)
