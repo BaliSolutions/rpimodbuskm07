@@ -27,13 +27,13 @@ From <input type="time" name="start_time" value="<?php echo $_POST["start_time"]
 	$date = mysql_real_escape_string($_POST['date']);
 	$start_time = mysql_real_escape_string($_POST['start_time']);
 	$stop_time = mysql_real_escape_string($_POST['stop_time']);
-	$sql = "SELECT date,time,volt,amp,pf,kva FROM rawdata WHERE date='$date' AND time BETWEEN '$start_time' and '$stop_time'";
+	$sql = "SELECT date,time,volt,amp,pf,kva,kwh FROM rawdata WHERE date='$date' AND time BETWEEN '$start_time' and '$stop_time'";
 	mysql_select_db(km07);
 	$retval = mysql_query($sql,$conn);
 	while($row = mysql_fetch_array($retval,MYSQL_ASSOC))
 	{
 		echo 	"Date : {$row['date']} Time : {$row['time']} <br>".
-				"{$row['volt']} Volt {$row['amp']} Amp PF={$row['pf']} Readed KVA={$row['kva']} kWh={$row[2]} <br>".
+				"{$row['volt']} Volt {$row['amp']} Amp PF={$row['pf']} Readed KVA={$row['kva']} kWh={$row['kwh']} <br>".
 				"------------------------------------------<br>";
 	}
 	$time = array();
