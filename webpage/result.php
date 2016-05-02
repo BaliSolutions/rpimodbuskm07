@@ -79,6 +79,9 @@ var kwh = new Chart(ctx, {
                     beginAtZero:true
                 }
             }]
+            xAxes: [{
+                type : "time"
+            }]
         }
     }
 });
