@@ -113,10 +113,10 @@ var amp = new Chart(ctx, {
         labels: <?=json_encode(array_values($time));?>,
         datasets: [{
             label: 'Current',
-            backgroundColor : "rgba(109,255,134,0.4)",
-			borderColor : "#6DFF86",
+            backgroundColor : "rgba(72,255,0,0.4)",
+			borderColor : "#0CE818",
 			pointBackgroundColor : "#fff",
-			pointBorderCorlor : "#57E89A",
+			pointBorderCorlor : "#97E80C",
             data: <?=json_encode(array_values($amp));?>
         }]
     },
