@@ -103,11 +103,7 @@ def readTotalkWh():
 		print "Try to read"
 		try:
 			time.sleep(0.004)
-			if (instrument.read_register(537,0,4,False))==1:
-				mul=1.0
-			else :
-				mul=1000.0
-			print "Read 537 OK %s" %(mul)
+			print "Read 537 OK %s" %(instrument.read_register(537,0,4,False))
 			time.sleep(0.004)
 			kexp = instrument.read_register(536,0,4,False)
 			print "Read 536 OK %s" %(kexp)
