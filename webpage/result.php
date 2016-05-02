@@ -33,7 +33,7 @@ From <input type="time" name="start_time" value="<?php echo $_POST["start_time"]
 	while($row = mysql_fetch_array($retval,MYSQL_ASSOC))
 	{
 		echo 	"Date : {$row['date']} Time : {$row['time']} <br>".
-				"{$row['volt']} Volt {$row['amp']} Amp PF={$row['pf']} Readed KVA={$row['kva']} kWh={$row['kwh']} <br>".
+				"{$row['volt']} Volt {$row['amp']} Amp PF={$row['pf']} Readed KVA={$row['kva']} kWh={$row[2]} <br>".
 				"------------------------------------------<br>";
 	}
 	$time = array();
