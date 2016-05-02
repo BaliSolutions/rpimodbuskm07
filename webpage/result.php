@@ -59,16 +59,21 @@ var kwh = new Chart(ctx, {
     type: 'line',
     data: {
         labels: <?=json_encode(array_values($time));?>,
-        datasets: [
-        	{
-				label: 'Total kWh',
-            	data: <?=json_encode(array_values($kwh));?>
-			}
-		]
-		},
+        datasets: [{
+            label: 'Total kVa',
+            data: <?=json_encode(array_values($kwh));?>
+        }]
+    },
     options: {
-
-	});
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
 </script>
 
 
