@@ -36,8 +36,8 @@ From <input type="time" name="start_time" value="<?php echo $_POST["start_time"]
 				"{$row['volt']} Volt {$row['amp']} Amp PF={$row['pf']} Readed KVA={$row['kva']} kWh={$row['kwh']} <br>".
 				"------------------------------------------<br>";
 	}*/
-	$time = array();
-	$kwh = array();
+	//$time = array();
+	//$kwh = array();
 	$n=0;
 	while($row = mysql_fetch_array($retval,MYSQL_ASSOC))
 	{
@@ -124,7 +124,7 @@ var pf = new Chart(ctx, {
     data: {
         labels: <?=json_encode(array_values($time));?>,
         datasets: [{
-            label: 'Voltage',
+            label: 'Power Factor',
             data: <?=json_encode(array_values($pf));?>
         }]
     },
@@ -144,7 +144,7 @@ var kva = new Chart(ctx, {
     data: {
         labels: <?=json_encode(array_values($time));?>,
         datasets: [{
-            label: 'Voltage',
+            label: 'KVA',
             data: <?=json_encode(array_values($kva));?>
         }]
     },
