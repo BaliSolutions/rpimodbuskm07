@@ -66,22 +66,22 @@ var myChart = new Chart(ctx, {
 		},
 		datasets: [{
 			label: 'Voltage',
-            data: <?=json_encode(array_values($kwh));?>
+            data: <?=json_encode(array_values($volt));?>
 			}]
 		},
 		datasets: [{
 			label: 'Current',
-            data: <?=json_encode(array_values($kwh));?>
+            data: <?=json_encode(array_values($amp));?>
 			}]
 		},
 		datasets: [{
 			label: 'Power Factor',
-            data: <?=json_encode(array_values($kwh));?>
+            data: <?=json_encode(array_values($pf));?>
 			}]
 		},
 		datasets: [{
 			label: 'KVA',
-            data: <?=json_encode(array_values($kwh));?>
+            data: <?=json_encode(array_values($kva));?>
 			}]
 		},
     options: {
