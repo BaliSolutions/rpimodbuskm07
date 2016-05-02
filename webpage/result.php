@@ -89,10 +89,10 @@ var volt = new Chart(ctx, {
         labels: <?=json_encode(array_values($time));?>,
         datasets: [{
             label: 'Voltage',
-            backgroundColor : "rgba(172,194,132,0.4)",
-			borderColor : "#ACC26D",
+            backgroundColor : "rgba(42,32,255,0.4)",
+			borderColor : "#1140E8",
 			pointBackgroundColor : "#fff",
-			pointBorderCorlor : "#9DB86D",
+			pointBorderCorlor : "#5611E8",
             data: <?=json_encode(array_values($volt));?>
         }]
     },
@@ -113,10 +113,10 @@ var amp = new Chart(ctx, {
         labels: <?=json_encode(array_values($time));?>,
         datasets: [{
             label: 'Current',
-            backgroundColor : "rgba(172,194,132,0.4)",
-			borderColor : "#ACC26D",
+            backgroundColor : "rgba(109,255,134,0.4)",
+			borderColor : "#6DFF86",
 			pointBackgroundColor : "#fff",
-			pointBorderCorlor : "#9DB86D",
+			pointBorderCorlor : "#57E89A",
             data: <?=json_encode(array_values($amp));?>
         }]
     },
@@ -137,10 +137,10 @@ var pf = new Chart(ctx, {
         labels: <?=json_encode(array_values($time));?>,
         datasets: [{
             label: 'Power Factor',
-            backgroundColor : "rgba(172,194,132,0.4)",
-			borderColor : "#ACC26D",
+            backgroundColor : "rgba(232,101,255,0.4)",
+			borderColor : "#A851E8",
 			pointBackgroundColor : "#fff",
-			pointBorderCorlor : "#9DB86D",
+			pointBorderCorlor : "#E851C6",
             data: <?=json_encode(array_values($pf));?>
         }]
     },
@@ -161,10 +161,10 @@ var kva = new Chart(ctx, {
         labels: <?=json_encode(array_values($time));?>,
         datasets: [{
             label: 'KVA',
-            backgroundColor : "rgba(172,194,132,0.4)",
-			borderColor : "#ACC26D",
+            backgroundColor : "rgba(255,223,110,0.4)",
+			borderColor : "#E8BA59",
 			pointBackgroundColor : "#fff",
-			pointBorderCorlor : "#9DB86D",
+			pointBorderCorlor : "#E8D759",
             data: <?=json_encode(array_values($kva));?>
         }]
     },
