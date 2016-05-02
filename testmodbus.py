@@ -127,10 +127,10 @@ while True:
 	kw=readkW()
 	kvar=readkVar()
 	kva=readkVA()
-	totalkwh=readTotalkWh()
+	#totalkwh=readTotalkWh()
 	print "%s Voltage %s Amp PF=%s" %(volt,amp,pf)
 	print "%s Kw %s KVar %s KVA" %(kw,kvar,kva)
-	print "%s Total kWh" %(totalkwh)
+	#print "%s Total kWh" %(totalkwh)
 	print "======================================="
 	try:
 		curs.execute ("""INSERT INTO rawdata values (CURRENT_DATE(),NOW(),%s,%s,%s,%s,%s,%s)""", (volt,amp,pf,kw,kvar,kva))
