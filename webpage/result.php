@@ -40,8 +40,10 @@ From <input type="time" name="start_time" value="<?php echo $_POST["start_time"]
 	$kwh = array();
 	while($row = mysql_fetch_array($retval,MYSQL_ASSOC))
 	{
-		$time[$row[0]] = $row['time'];
-		$kwh[$row[0]] = $row['kwh'];
+		$n=0;
+		$time[n] = $row['time'];
+		$kwh[n] = $row['kwh'];
+		n++;
 	}
 	mysql_close($conn);
 ?>
@@ -52,10 +54,10 @@ var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: <?=json_encode($time);?>,
+        labels: <?=json_encode(array_values($time));?>,
         datasets: [{
 			label: '# of Votes',
-            data: <?=json_encode($kwh);?>
+            data: <?=json_encode(array_values($kwh));?>
         }]
     },
     options: {
