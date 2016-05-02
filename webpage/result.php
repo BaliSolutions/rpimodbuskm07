@@ -30,25 +30,32 @@ From <input type="time" name="start_time" value="<?php echo $_POST["start_time"]
 	$sql = "SELECT date,time,volt,amp,pf,kva FROM rawdata WHERE date='$date' AND time BETWEEN '$start_time' and '$stop_time'";
 	mysql_select_db(km07);
 	$retval = mysql_query($sql,$conn);
-	while($row = mysql_fetch_array($retval,MYSQL_ASSOC))
+	/*while($row = mysql_fetch_array($retval,MYSQL_ASSOC))
 	{
 		echo 	"Date : {$row['date']} Time : {$row['time']} <br>".
 				"{$row['volt']} Volt {$row['amp']} Amp PF={$row['pf']} Readed KVA={$row['kva']} <br>".
 				"------------------------------------------<br>";
+	}*/
+	$time = array();
+	$kwh = array();
+	while($row = mysql_fetch_array($retval,MYSQL_ASSOC))
+	{
+		$time[$row[0]] = $row['time'];
+		$kwh[$row[0]] = $row['kwh'];
 	}
 	mysql_close($conn);
 ?>
 
-<canvas id="myChart" width="150" height="150"></canvas>
+<canvas id="myChart" width="400" height="300"></canvas>
 <script>
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        labels: <?=json_encode(array_values($time));?>,
         datasets: [{
             label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3]
+            data: <?=json_encode(array_values($kwh));?>
         }]
     },
     options: {
