@@ -54,6 +54,9 @@ From <input type="time" name="start_time" value="<?php echo $_POST["start_time"]
 
 <canvas id="kwh" width="60" height="20"></canvas>
 <canvas id="volt" width="60" height="20"></canvas>
+<canvas id="amp" width="60" height="20"></canvas>
+<canvas id="pf" width="60" height="20"></canvas>
+<canvas id="kva" width="60" height="20"></canvas>
 <script>
 var ctx = document.getElementById("kwh");
 var kwh = new Chart(ctx, {
@@ -89,7 +92,67 @@ var volt = new Chart(ctx, {
         scales: {
             yAxes: [{
                 ticks: {
+                    beginAtZero:false
+                }
+            }]
+        }
+    }
+});
+var ctx = document.getElementById("amp");
+var amp = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: <?=json_encode(array_values($time));?>,
+        datasets: [{
+            label: 'Current',
+            data: <?=json_encode(array_values($amp));?>
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:false
+                }
+            }]
+        }
+    }
+});
+var ctx = document.getElementById("pf");
+var pf = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: <?=json_encode(array_values($time));?>,
+        datasets: [{
+            label: 'Voltage',
+            data: <?=json_encode(array_values($pf));?>
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
                     beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+var ctx = document.getElementById("kva");
+var kva = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: <?=json_encode(array_values($time));?>,
+        datasets: [{
+            label: 'Voltage',
+            data: <?=json_encode(array_values($kva));?>
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:false
                 }
             }]
         }
