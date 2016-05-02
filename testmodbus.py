@@ -100,7 +100,6 @@ def readkVA():
 	return kva1
 def readTotalkWh():
 	while True:
-		print "Try to read"
 		try:
 			time.sleep(0.004)
 			if (instrument.read_register(537,0,4,False))<=1:
@@ -135,7 +134,7 @@ while True:
 	print "%s Total kWh" %(kwh)
 	print "======================================="
 	try:
-		curs.execute ("""INSERT INTO rawdata values (CURRENT_DATE(),NOW(),%s,%s,%s,%s,%s,%s)""", (volt,amp,pf,kw,kvar,kva))
+		curs.execute ("""INSERT INTO rawdata values (CURRENT_DATE(),NOW(),%s,%s,%s,%s,%s,%s,%s)""", (volt,amp,pf,kw,kvar,kva,kwh))
 		db.commit()
 		print "Data committed"
 	except:
