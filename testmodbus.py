@@ -97,6 +97,26 @@ def readkVA():
 			#print ("Received Amps Data")
 			break
 	return kva1
+def readTotalkWh():
+	while True:
+		try:
+			time.sleep(0.004)
+			if (instrument.read_register(537,0,4,False))==1:
+				mul=1.0
+			else if (instrument.read_register(537,0,4,False))==2:
+				mul=1000.0
+			time.sleep(0.004)
+			kexp = instrument.read_register(536,0,4,False)
+			time.sleep(0.004)
+			totalkwh = (instrument.read_long(543,4,True))*mul/math.pow(10,-1.0*kexp)
+		except:
+			#print ("Got some Amps read error")
+			continue
+		else:
+			#print ("Received Amps Data")
+			break
+	return totalkwh
+
 
 while True:
 	print datetime.now() #timestamp start
@@ -106,8 +126,10 @@ while True:
 	kw=readkW()
 	kvar=readkVar()
 	kva=readkVA()
+	totalkwh=readTotalkWh()
 	print "%s Voltage %s Amp PF=%s" %(volt,amp,pf)
 	print "%s Kw %s KVar %s KVA" %(kw,kvar,kva)
+	print "%s Total kWh" %(totalkwh)
 	print "======================================="
 	try:
 		curs.execute ("""INSERT INTO rawdata values (CURRENT_DATE(),NOW(),%s,%s,%s,%s,%s,%s)""", (volt,amp,pf,kw,kvar,kva))
