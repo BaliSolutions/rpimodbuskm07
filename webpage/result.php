@@ -52,7 +52,8 @@ From <input type="time" name="start_time" value="<?php echo $_POST["start_time"]
 	mysql_close($conn);
 ?>
 
-<canvas id="kwh" width="400" height="300"></canvas>
+<canvas id="kwh" width="400" height="300"></canvas><br>
+<canvas id="volt" width="400" height="300"></canvas>
 <script>
 var ctx = document.getElementById("kwh");
 var kwh = new Chart(ctx, {
@@ -62,6 +63,26 @@ var kwh = new Chart(ctx, {
         datasets: [{
             label: 'Total kVa',
             data: <?=json_encode(array_values($kwh));?>
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+var ctx = document.getElementById("volt");
+var volt = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: <?=json_encode(array_values($time));?>,
+        datasets: [{
+            label: 'Voltage',
+            data: <?=json_encode(array_values($volt));?>
         }]
     },
     options: {
