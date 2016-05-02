@@ -52,10 +52,14 @@ From <input type="time" name="start_time" value="<?php echo $_POST["start_time"]
 	mysql_close($conn);
 ?>
 
-<canvas id="myChart" width="400" height="300"></canvas>
+<canvas id="kwh" width="400" height="300"></canvas>
+<canvas id="volt" width="400" height="300"></canvas>
+<canvas id="amp" width="400" height="300"></canvas>
+<canvas id="pf" width="400" height="300"></canvas>
+<canvas id="kva" width="400" height="300"></canvas>
 <script>
-var ctx = document.getElementById("myChart");
-var myChart = new Chart(ctx, {
+var ctx = document.getElementById("kwh");
+var kwh = new Chart(ctx, {
     type: 'line',
     data: {
         labels: <?=json_encode(array_values($time));?>,
@@ -63,19 +67,63 @@ var myChart = new Chart(ctx, {
         	{
 				label: 'Total kWh',
             	data: <?=json_encode(array_values($kwh));?>
-			},
+			}
+		]
+		},
+    options: {
+
+	});
+var ctx = document.getElementById("volt");
+var volt = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: <?=json_encode(array_values($time));?>,
+        datasets: [
 			{
 				label: 'Voltage',
             	data: <?=json_encode(array_values($volt));?>
-			},
+			}
+		]
+		},
+    options: {
+
+	});
+var ctx = document.getElementById("amp");
+var amp = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: <?=json_encode(array_values($time));?>,
+        datasets: [
 			{
 				label: 'Current',
             	data: <?=json_encode(array_values($amp));?>
-			},
+			}
+		]
+		},
+    options: {
+
+	});
+var ctx = document.getElementById("pf");
+var pf = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: <?=json_encode(array_values($time));?>,
+        datasets: [
 			{
 				label: 'Power Factor',
             	data: <?=json_encode(array_values($pf));?>
-			},
+			}
+		]
+		},
+    options: {
+
+	});
+var ctx = document.getElementById("kva");
+var kva = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: <?=json_encode(array_values($time));?>,
+        datasets: [
 			{
 				label: 'KVA',
             	data: <?=json_encode(array_values($kva));?>
@@ -83,16 +131,10 @@ var myChart = new Chart(ctx, {
 		]
 		},
     options: {
-		scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
-        }
-    }
-});
+
+	});
 </script>
+
 
 </body>
 </html>
