@@ -52,8 +52,8 @@ From <input type="time" name="start_time" value="<?php echo $_POST["start_time"]
 	mysql_close($conn);
 ?>
 
-<canvas id="kwh" width="4" height="2"></canvas><br>
-<canvas id="volt" width="4" height="2"></canvas>
+<canvas id="kwh" width="60" height="20"></canvas>
+<canvas id="volt" width="60" height="20"></canvas>
 <script>
 var ctx = document.getElementById("kwh");
 var kwh = new Chart(ctx, {
