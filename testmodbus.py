@@ -112,7 +112,7 @@ def readTotalkWh():
 			print "Read 536 OK %s" %(kexp)
 			time.sleep(0.004)
 			totalkwh = ((instrument.read_long(543,4,True))*mul)/math.pow(10,-1.0*kexp)
-			print "Read 536 OK %s" %(totalkwh)
+			print "Read 543 OK %s" %(totalkwh)
 		except:
 			#print ("Got some Amps read error")
 			continue
