@@ -41,9 +41,9 @@ From <input type="time" name="start_time" value="<?php echo $_POST["start_time"]
 	while($row = mysql_fetch_array($retval,MYSQL_ASSOC))
 	{
 		$n=0;
-		$time[n] = $row['time'];
-		$kwh[n] = $row['kwh'];
-		n++;
+		$time[$n] = $row['time'];
+		$kwh[$n] = $row['kwh'];
+		$n++;
 	}
 	mysql_close($conn);
 ?>
