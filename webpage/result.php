@@ -161,10 +161,10 @@ var kva = new Chart(ctx, {
         labels: <?=json_encode(array_values($time));?>,
         datasets: [{
             label: 'KVA',
-            backgroundColor : "rgba(255,223,110,0.4)",
-			borderColor : "#E8D759",
+            backgroundColor : "rgba(255,176,0,0.4)",
+			borderColor : "#E88E0C",
 			pointBackgroundColor : "#fff",
-			pointBorderCorlor : "#E8BA59",
+			pointBorderCorlor : "#E8BA0C",
             data: <?=json_encode(array_values($kva));?>
         }]
     },
