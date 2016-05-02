@@ -65,10 +65,10 @@ var kwh = new Chart(ctx, {
         labels: <?=json_encode(array_values($time));?>,
         datasets: [{
             label: 'Total kVa',
-            backgroundColor : "rgba(172,194,132,0.4)",
-			borderColor : "#ACC26D",
+            backgroundColor : "rgba(255,67,60,0.4)",
+			borderColor : "#E82B72",
 			pointBackgroundColor : "#fff",
-			pointBorderCorlor : "#9DB86D",
+			pointBorderCorlor : "#E84E2B",
             data: <?=json_encode(array_values($kwh));?>
         }]
     },
@@ -89,6 +89,10 @@ var volt = new Chart(ctx, {
         labels: <?=json_encode(array_values($time));?>,
         datasets: [{
             label: 'Voltage',
+            backgroundColor : "rgba(172,194,132,0.4)",
+			borderColor : "#ACC26D",
+			pointBackgroundColor : "#fff",
+			pointBorderCorlor : "#9DB86D",
             data: <?=json_encode(array_values($volt));?>
         }]
     },
@@ -109,6 +113,10 @@ var amp = new Chart(ctx, {
         labels: <?=json_encode(array_values($time));?>,
         datasets: [{
             label: 'Current',
+            backgroundColor : "rgba(172,194,132,0.4)",
+			borderColor : "#ACC26D",
+			pointBackgroundColor : "#fff",
+			pointBorderCorlor : "#9DB86D",
             data: <?=json_encode(array_values($amp));?>
         }]
     },
@@ -129,6 +137,10 @@ var pf = new Chart(ctx, {
         labels: <?=json_encode(array_values($time));?>,
         datasets: [{
             label: 'Power Factor',
+            backgroundColor : "rgba(172,194,132,0.4)",
+			borderColor : "#ACC26D",
+			pointBackgroundColor : "#fff",
+			pointBorderCorlor : "#9DB86D",
             data: <?=json_encode(array_values($pf));?>
         }]
     },
@@ -149,6 +161,10 @@ var kva = new Chart(ctx, {
         labels: <?=json_encode(array_values($time));?>,
         datasets: [{
             label: 'KVA',
+            backgroundColor : "rgba(172,194,132,0.4)",
+			borderColor : "#ACC26D",
+			pointBackgroundColor : "#fff",
+			pointBorderCorlor : "#9DB86D",
             data: <?=json_encode(array_values($kva));?>
         }]
     },
