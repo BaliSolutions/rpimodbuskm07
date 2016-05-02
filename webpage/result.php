@@ -59,30 +59,28 @@ var myChart = new Chart(ctx, {
     type: 'line',
     data: {
         labels: <?=json_encode(array_values($time));?>,
-        datasets: [{
-			label: 'Total kWh',
-            data: <?=json_encode(array_values($kwh));?>
-			}]
-		},
-		datasets: [{
-			label: 'Voltage',
-            data: <?=json_encode(array_values($volt));?>
-			}]
-		},
-		datasets: [{
-			label: 'Current',
-            data: <?=json_encode(array_values($amp));?>
-			}]
-		},
-		datasets: [{
-			label: 'Power Factor',
-            data: <?=json_encode(array_values($pf));?>
-			}]
-		},
-		datasets: [{
-			label: 'KVA',
-            data: <?=json_encode(array_values($kva));?>
-			}]
+        datasets: [
+        	{
+				label: 'Total kWh',
+            	data: <?=json_encode(array_values($kwh));?>
+			},
+			{
+				label: 'Voltage',
+            	data: <?=json_encode(array_values($volt));?>
+			},
+			{
+				label: 'Current',
+            	data: <?=json_encode(array_values($amp));?>
+			},
+			{
+				label: 'Power Factor',
+            	data: <?=json_encode(array_values($pf));?>
+			},
+			{
+				label: 'KVA',
+            	data: <?=json_encode(array_values($kva));?>
+			}
+		]
 		},
     options: {
 		scales: {
