@@ -43,6 +43,10 @@ From <input type="time" name="start_time" value="<?php echo $_POST["start_time"]
 	{
 		$time[$n] = $row['time'];
 		$kwh[$n] = $row['kwh'];
+		$volt[$n] = $row['volt'];
+		$amp[$n] = $row['amp'];
+		$pf[$n] = $row['pf'];
+		$kva[$n] = $row['kva'];
 		$n++;
 	}
 	mysql_close($conn);
@@ -52,16 +56,36 @@ From <input type="time" name="start_time" value="<?php echo $_POST["start_time"]
 <script>
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'line',
     data: {
         labels: <?=json_encode(array_values($time));?>,
         datasets: [{
-			label: '# of Votes',
+			label: 'Total kWh',
             data: <?=json_encode(array_values($kwh));?>
-        }]
-    },
+			}]
+		},
+		datasets: [{
+			label: 'Voltage',
+            data: <?=json_encode(array_values($kwh));?>
+			}]
+		},
+		datasets: [{
+			label: 'Current',
+            data: <?=json_encode(array_values($kwh));?>
+			}]
+		},
+		datasets: [{
+			label: 'Power Factor',
+            data: <?=json_encode(array_values($kwh));?>
+			}]
+		},
+		datasets: [{
+			label: 'KVA',
+            data: <?=json_encode(array_values($kwh));?>
+			}]
+		},
     options: {
-        scales: {
+		scales: {
             yAxes: [{
                 ticks: {
                     beginAtZero:true
