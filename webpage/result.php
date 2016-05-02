@@ -43,8 +43,8 @@ From <input type="time" name="start_time" value="<?php echo $_POST["start_time"]
 		$n=0;
 		$time[$n] = $row['time'];
 		$kwh[$n] = $row['kwh'];
-		echo 	"{$row['time']} {$row['kwh']}<br>".
-				"{$time[$n]} {$kwh[$n]}<br>";
+		echo 	"{$row['time']} {$row['kwh']} <br>".
+				"{$time[$n]} {$kwh[$n]} <br>";
 		$n++;
 	}
 	mysql_close($conn);
