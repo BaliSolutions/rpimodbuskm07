@@ -64,7 +64,7 @@ var kwh = new Chart(ctx, {
     data: {
         labels: <?=json_encode(array_values($time));?>,
         datasets: [{
-            label: 'Total kVa',
+            label: 'Total kVh',
             backgroundColor : "rgba(255,67,60,0.4)",
 			borderColor : "#E82B72",
 			pointBackgroundColor : "#fff",
