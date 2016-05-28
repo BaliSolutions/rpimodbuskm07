@@ -7,5 +7,5 @@
   $sql = "SELECT * FROM realtime WHERE id=1";
   mysql_select_db(km07);
   $retval = mysql_query($sql,$conn);
-  echo $retval;
+  echo $retval['volt'];
 ?>
