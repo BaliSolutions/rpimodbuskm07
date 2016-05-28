@@ -3,6 +3,7 @@ import minimalmodbus
 import time
 import MySQLdb
 import math
+import thread
 from datetime import datetime
 
 instrument = minimalmodbus.Instrument('/dev/ttyAMA0', 1, mode='rtu') # port name, slave address (in decimal)
@@ -118,27 +119,50 @@ def readTotalkWh():
 			break
 	return totalkwh
 
-lasttotalkwh=readTotalkWh()
-while True:
-	print datetime.now() #timestamp start
-	volt=readvoltage()
-	amp=readamp()
-	pf=readpf()
-	kw=readkW()
-	kvar=readkVar()
-	kva=readkVA()
-	totalkwh=readTotalkWh()
-	kwh=totalkwh-lasttotalkwh
-	print "%s Voltage %s Amp PF=%s" %(volt,amp,pf)
-	print "%s Kw %s KVar %s KVA" %(kw,kvar,kva)
-	print "%s Total kWh" %(kwh)
-	print "======================================="
-	try:
-		curs.execute ("""INSERT INTO rawdata values (CURRENT_DATE(),NOW(),%s,%s,%s,%s,%s,%s,%s)""", (volt,amp,pf,kw,kvar,kva,kwh))
-		db.commit()
-		print "Data committed"
-	except:
-		print "Error: the database is being rolled back"
-		db.rollback()
-	lasttotalkwh=totalkwh
-	time.sleep(300)
+def rawdata():
+	while True:
+		print datetime.now() #timestamp start
+		volt=readvoltage()
+		amp=readamp()
+		pf=readpf()
+		kw=readkW()
+		kvar=readkVar()
+		kva=readkVA()
+		kwh=readTotalkWh()
+		print "%s Voltage %s Amp PF=%s" %(volt,amp,pf)
+		print "%s Kw %s KVar %s KVA" %(kw,kvar,kva)
+		print "%s Total kWh" %(kwh)
+		print "======================================="
+		try:
+			curs.execute ("""INSERT INTO rawdata values (CURRENT_DATE(),NOW(),%s,%s,%s,%s,%s,%s,%s)""", (volt,amp,pf,kw,kvar,kva,kwh))
+			db.commit()
+			print "Data committed"
+		except:
+			print "Error: the database is being rolled back"
+			db.rollback()
+		time.sleep(300)
+
+def realtime():
+	while True:
+		volt=readvoltage()
+		amp=readamp()
+		pf=readpf()
+		kw=readkW()
+		kvar=readkVar()
+		kva=readkVA()
+		kwh=readTotalkWh()
+		try:
+			curs.execute ("""INSERT INTO realtime values (CURRENT_DATE(),NOW(),%s,%s,%s,%s,%s,%s,%s)""", (volt,amp,pf,kw,kvar,kva,kwh))
+			db.commit()
+			print "Realtime-Data committed"
+		except:
+			print "Realtime-Error: the database is being rolled back"
+			db.rollback()
+		time.sleep(15)
+
+try:
+   thread.start_new_thread( realtime, (,) )
+   time.sleep(5)
+   thread.start_new_thread( rawdata, (,) )
+except:
+   print "Error: unable to start thread"

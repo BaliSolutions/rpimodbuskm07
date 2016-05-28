@@ -10,7 +10,7 @@
 Select Date and Time range to view data
 <form action="result.php" method="post">
 <input type="date" name="date" value="<?php echo $_POST["date"]; ?>">
-From <input type="time" name="start_time" value="<?php echo $_POST["start_time"]; ?>"> To <input type="time" name="stop_time" value="<?php echo $_POST["stop_time"]; ?>"> 
+From <input type="time" name="start_time" value="<?php echo $_POST["start_time"]; ?>"> To <input type="time" name="stop_time" value="<?php echo $_POST["stop_time"]; ?>">
  <br><br>
  <input type="submit">
 </form>
@@ -50,6 +50,11 @@ From <input type="time" name="start_time" value="<?php echo $_POST["start_time"]
 		$n++;
 	}
 	mysql_close($conn);
+
+	$deltakwh[0]=0;
+	for ($i=1; $i < count($kwh); $i++) {
+		$deltakwh[$i]=$kwh[$i]-$kwh[$i-1];
+	}
 ?>
 
 <canvas id="kwh" width="60" height="20"></canvas>
@@ -64,12 +69,12 @@ var kwh = new Chart(ctx, {
     data: {
         labels: <?=json_encode(array_values($time));?>,
         datasets: [{
-            label: 'Total kVh',
+            label: 'Delta kVh',
             backgroundColor : "rgba(255,67,60,0.4)",
 			borderColor : "#E82B72",
 			pointBackgroundColor : "#fff",
 			pointBorderCorlor : "#E84E2B",
-            data: <?=json_encode(array_values($kwh));?>
+            data: <?=json_encode(array_values($deltakwh));?>
         }]
     },
     options: {
