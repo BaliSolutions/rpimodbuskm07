@@ -152,7 +152,8 @@ def realtime():
 		kva=readkVA()
 		kwh=readTotalkWh()
 		try:
-			curs.execute ("""INSERT INTO realtime values (CURRENT_DATE(),NOW(),%s,%s,%s,%s,%s,%s,%s)""", (volt,amp,pf,kw,kvar,kva,kwh))
+			curs.execute ("""UPDATE realtime SET volt=%s, amp=%s, pf=%s, kw=%s, kvar=%s, kva=%s, kwh=%s WHERE id=1""", (volt,amp,pf,kw,kvar,kva,kwh))
+			#curs.execute ("""INSERT INTO realtime values (CURRENT_DATE(),NOW(),%s,%s,%s,%s,%s,%s,%s)""", (volt,amp,pf,kw,kvar,kva,kwh))
 			db.commit()
 			print "Realtime-Data committed"
 		except:
