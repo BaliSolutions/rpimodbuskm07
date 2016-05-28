@@ -121,7 +121,7 @@ def readTotalkWh():
 
 def rawdata():
 	while True:
-		print datetime.now() #timestamp start
+		#print datetime.now() #timestamp start
 		volt=readvoltage()
 		amp=readamp()
 		pf=readpf()
