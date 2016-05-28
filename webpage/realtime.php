@@ -17,5 +17,5 @@
 		$kva = $row['kva'];
 		$kwh = $row['kwh'];
 	}
-  echo $volt . $amp ;
+  echo "Voltage = " . $volt . "V. Current = " . $amp . " A. Power Factor = " . $pf . "<br> Power = " . $kw . " kW Reactive Power = " . $kvar . " kVar Apparent Power = " . $kva . " kVA". "<br> Total Power = " . $kwh . " kWh";
 ?>
