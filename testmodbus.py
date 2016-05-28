@@ -162,8 +162,8 @@ def realtime():
 		time.sleep(15)
 
 try:
-   thread.start_new_thread( realtime, (,) )
+   thread.start_new_thread( realtime,)
    time.sleep(5)
-   thread.start_new_thread( rawdata, (,) )
+   thread.start_new_thread( rawdata,)
 except:
    print "Error: unable to start thread"
