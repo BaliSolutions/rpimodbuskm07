@@ -7,8 +7,8 @@
     	var myChart = new Chart({...})
 	</script>
 	<script>
-		$("#latestData").load("realtime.php");
     $(document).ready(function(){
+			$("#latestData").load("realtime.php");
         setInterval(function() {
             $("#latestData").load("realtime.php");
         }, 5000);
