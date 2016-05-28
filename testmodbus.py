@@ -3,7 +3,7 @@ import minimalmodbus
 import time
 import MySQLdb
 import math
-import thread
+import threading
 from datetime import datetime
 
 instrument = minimalmodbus.Instrument('/dev/ttyAMA0', 1, mode='rtu') # port name, slave address (in decimal)
@@ -161,9 +161,6 @@ def realtime():
 			db.rollback()
 		time.sleep(15)
 
-try:
-   thread.start_new_thread( realtime, ())
-   time.sleep(5)
-   thread.start_new_thread( rawdata, ())
-except:
-   print "Error: unable to start thread"
+threading.Thread(target=realtime).start()
+time.sleep(5)
+threading.Thread(target=rawdata).start()
