@@ -2,8 +2,17 @@
 <html>
 <head>
 	<script src="Chart.js"></script>
+	<script src="jquery-1.12.4.js"></script>
 	<script>
     	var myChart = new Chart({...})
+	</script>
+	<script>
+    $(document).ready(function(){
+        setInterval(function() {
+            $("#latestData").load("realtime.php");
+        }, 5000);
+    });
+
 	</script>
 </head>>
 <body>
@@ -56,6 +65,10 @@ From <input type="time" name="start_time" value="<?php echo $_POST["start_time"]
 		$deltakwh[$i]=$kwh[$i]-$kwh[$i-1];
 	}
 ?>
+
+<div id = "latestData">
+
+</div>
 
 <canvas id="kwh" width="60" height="20"></canvas>
 <canvas id="volt" width="60" height="20"></canvas>
