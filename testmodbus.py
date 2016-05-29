@@ -171,5 +171,5 @@ def realtime():
 		time.sleep(5)
 
 threading.Thread(target=realtime).start()
-#time.sleep(3)
+time.sleep(3)
 threading.Thread(target=rawdata).start()
