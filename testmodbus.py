@@ -123,7 +123,7 @@ israwdata=0
 def rawdata():
 	while True:
 		#print datetime.now() #timestamp start
-		while isrealtime=1:
+		while isrealtime==1:
 			continue
 		israwdata=1
 		volt=readvoltage()
@@ -149,7 +149,7 @@ def rawdata():
 
 def realtime():
 	while True:
-		while israwdata=1:
+		while israwdata==1:
 			continue
 		isrealtime=1
 		volt=readvoltage()
