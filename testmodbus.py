@@ -127,7 +127,8 @@ def rawdata():
 		while isrealtime==1:
 			print "Wait Realtime Finish"
 			time.sleep(1)
-		global israwdata=1
+		global israwdata
+		israwdata=1
 		volt=readvoltage()
 		amp=readamp()
 		pf=readpf()
@@ -156,7 +157,8 @@ def realtime():
 		while israwdata==1:
 			print "Wait Raw Finish"
 			time.sleep(1)
-		global isrealtime=1
+		global isrealtime
+		isrealtime=1
 		volt=readvoltage()
 		amp=readamp()
 		pf=readpf()
