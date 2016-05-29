@@ -11,7 +11,7 @@
 			$("#latestData").load("realtime.php");
         setInterval(function() {
             $("#latestData").load("realtime.php");
-        }, 5000);
+        }, 2000);
     });
 
 	</script>
