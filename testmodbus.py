@@ -118,10 +118,14 @@ def readTotalkWh():
 			#print ("Received Amps Data")
 			break
 	return totalkwh
-
+isrealtime=0
+israwdata=0
 def rawdata():
 	while True:
 		#print datetime.now() #timestamp start
+		while isrealtime=1:
+			continue
+		israwdata=1
 		volt=readvoltage()
 		amp=readamp()
 		pf=readpf()
@@ -129,6 +133,7 @@ def rawdata():
 		kvar=readkVar()
 		kva=readkVA()
 		kwh=readTotalkWh()
+		israwdata=0
 		print "%s Voltage %s Amp PF=%s" %(volt,amp,pf)
 		print "%s Kw %s KVar %s KVA" %(kw,kvar,kva)
 		print "%s Total kWh" %(kwh)
@@ -144,6 +149,9 @@ def rawdata():
 
 def realtime():
 	while True:
+		while israwdata=1:
+			continue
+		isrealtime=1
 		volt=readvoltage()
 		amp=readamp()
 		pf=readpf()
@@ -151,6 +159,7 @@ def realtime():
 		kvar=readkVar()
 		kva=readkVA()
 		kwh=readTotalkWh()
+		isrealtime=0
 		try:
 			curs.execute ("""UPDATE realtime SET volt=%s, amp=%s, pf=%s, kw=%s, kvar=%s, kva=%s, kwh=%s WHERE id=1""", (volt,amp,pf,kw,kvar,kva,kwh))
 			#curs.execute ("""INSERT INTO realtime values (CURRENT_DATE(),NOW(),%s,%s,%s,%s,%s,%s,%s)""", (volt,amp,pf,kw,kvar,kva,kwh))
@@ -159,8 +168,8 @@ def realtime():
 		except:
 			print "Realtime-Error: the database is being rolled back"
 			db.rollback()
-		time.sleep(6)
+		time.sleep(5)
 
 threading.Thread(target=realtime).start()
-time.sleep(13)
+#time.sleep(3)
 threading.Thread(target=rawdata).start()
