@@ -66,11 +66,12 @@ From <input type="time" name="start_time" value="<?php echo $_POST["start_time"]
 		$deltakwh[$i]=$kwh[$i]-$kwh[$i-1];
 	}
 ?>
-
-<div id = "latestData">
-
+<div align="center" style="border:1px solid red">Realtime Data from KM07
+	<div id = "latestData">
+		<!--Realtime Data From realtime.php-->
+	</div>
 </div>
-
+<div>Collected Data From Database</div>
 <canvas id="kwh" width="60" height="20"></canvas>
 <canvas id="volt" width="60" height="20"></canvas>
 <canvas id="amp" width="60" height="20"></canvas>
