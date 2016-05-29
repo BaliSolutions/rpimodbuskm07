@@ -119,7 +119,7 @@ def readTotalkWh():
 			break
 	return totalkwh
 isrealtime=0
-israwdata=0
+israwdata=1
 def rawdata():
 	while True:
 		#print datetime.now() #timestamp start
@@ -135,7 +135,7 @@ def rawdata():
 		kvar=readkVar()
 		kva=readkVA()
 		kwh=readTotalkWh()
-		israwdata=0
+		israwdata=1
 		print "End a raw reading"
 		print "%s Voltage %s Amp PF=%s" %(volt,amp,pf)
 		print "%s Kw %s KVar %s KVA" %(kw,kvar,kva)
