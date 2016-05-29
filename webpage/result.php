@@ -71,7 +71,8 @@ From <input type="time" name="start_time" value="<?php echo $_POST["start_time"]
 		<!--Realtime Data From realtime.php-->
 	</div>
 </div>
-<div>Collected Data From Database</div>
+<br><br>
+<div align="center">Collected Data From Database</div>
 <canvas id="kwh" width="60" height="20"></canvas>
 <canvas id="volt" width="60" height="20"></canvas>
 <canvas id="amp" width="60" height="20"></canvas>
