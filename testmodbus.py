@@ -135,7 +135,7 @@ def rawdata():
 		kvar=readkVar()
 		kva=readkVA()
 		kwh=readTotalkWh()
-		israwdata=1
+		israwdata=0
 		print "End a raw reading"
 		print "%s Voltage %s Amp PF=%s" %(volt,amp,pf)
 		print "%s Kw %s KVar %s KVA" %(kw,kvar,kva)
