@@ -159,8 +159,8 @@ def realtime():
 		except:
 			print "Realtime-Error: the database is being rolled back"
 			db.rollback()
-		time.sleep(5)
+		time.sleep(6)
 
 threading.Thread(target=realtime).start()
-time.sleep(2.5)
+time.sleep(13)
 threading.Thread(target=rawdata).start()
