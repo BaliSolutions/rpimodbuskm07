@@ -119,7 +119,7 @@ def readTotalkWh():
 			break
 	return totalkwh
 isrealtime=0
-israwdata=1
+israwdata=0
 def rawdata():
 	while True:
 		#print datetime.now() #timestamp start
