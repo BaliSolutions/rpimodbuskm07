@@ -15,7 +15,7 @@
     });
 
 	</script>
-</head>>
+</head>
 <body>
 Select Date and Time range to view data
 <form action="result.php" method="post">
