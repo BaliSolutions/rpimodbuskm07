@@ -122,11 +122,11 @@ isrealtime=0
 israwdata=0
 def rawdata():
 	while True:
-		#print datetime.now() #timestamp start
+		print datetime.now() #timestamp start
 		print "Doing a Raw reading"
 		while isrealtime==1:
 			print "Wait Realtime Finish"
-			time.sleep(1)
+			time.sleep(0.1)
 		global israwdata
 		israwdata=1
 		volt=readvoltage()
@@ -156,7 +156,7 @@ def realtime():
 		print "Doing a realtime reading"
 		while israwdata==1:
 			print "Wait Raw Finish"
-			time.sleep(1)
+			time.sleep(0.1)
 		global isrealtime
 		isrealtime=1
 		volt=readvoltage()
